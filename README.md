@@ -161,6 +161,8 @@ The pseudo-code for this would look like this.
         table.printStatistics();  }
 
 
+
+
 **Summary**
 
 Based on the above ​Steps​ which outline the modelling of Blackjack ​create your own game!You’re completely free to ​create your own interfaces, abstract classes and ​concrete classes​ toimplement the game. The UML diagrams above are giving you only a rough outline and by nomeans the only way to implement a game, or to organize classes.Once again, ​you’re free to experiment, but ​keep the Requirements in mind!

@@ -6,7 +6,8 @@ namespace CardGame
     {
         private int AmountCards;
         
-        private Dictionary<string, SingleCardGame> Cards;
+        private Dictionary<string, SingleCard> Cards = new Dictionary<string, SingleCard>();
+        
 
 
         public PlayerCardsDeck(int amountCards)
@@ -16,7 +17,7 @@ namespace CardGame
         }
         
         
-        public Dictionary<string, SingleCardGame> GetCards()
+        public Dictionary<string, SingleCard> GetCards()
         {
             return Cards;
         }
@@ -28,10 +29,17 @@ namespace CardGame
             var allCardsDeck = cardsDeck.GetAllCardsDeck();
             //Radek  - zaimplementuj proszę swoją  metodę, która losuje określoną ilość kart "amountCards" z "CardsDeck"
             //i wypełnij słownik pojedyńczeg gracza - czyli słownik "Cards"
+            
+            Cards.Add("Opel", new SingleCard("Opel", 200, 23123, 321, 2121));
+            Cards.Add("Opel1", new SingleCard("Opel11", 200, 23123, 321, 2121));
+            Cards.Add("Opel2", new SingleCard("Opel22", 200, 23123, 321, 2121));
+            Cards.Add("Opel3", new SingleCard("Opel33", 200, 23123, 321, 2121));
+
+            
         }
 
         
-        private void AddSingleCardToCards(SingleCardGame card) //metoda dodająca pojedyńczą kartę do słownika "Cards"
+        private void AddSingleCardToCards(SingleCard card) //metoda dodająca pojedyńczą kartę do słownika "Cards"
         {
             // ...
         }

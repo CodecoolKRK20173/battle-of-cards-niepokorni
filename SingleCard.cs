@@ -2,7 +2,7 @@
 
 namespace CardGame
 {
-    public class SingleCardGame
+    public class SingleCard
     {
         public string CarModel { get; set; }
         public int EngineCapacity { get; set; }
@@ -11,7 +11,7 @@ namespace CardGame
         public int EnginePower { get; set; }
 
         
-        public SingleCardGame(string carModel, int engineCapacity, int maxSpeed, int acceleration, int enginePower)
+        public SingleCard(string carModel, int engineCapacity, int maxSpeed, int acceleration, int enginePower)
         {
             CarModel = carModel;
             EngineCapacity = engineCapacity;

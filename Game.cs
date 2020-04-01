@@ -8,7 +8,7 @@ namespace CardGame
         private int numberOfPlayers;
         private static int amountCards;
         private PlayingTable _playingTable;
-        private Dictionary<string, Player> players = new Dictionary<string, Player>();
+        private List<Player> players = new List<Player>();
         
         
         public string NameOfTheGame
@@ -29,6 +29,8 @@ namespace CardGame
             set => amountCards = value;
         }
 
+        public List<Player> Players => players;
+
         public PlayingTable PlayingTable => _playingTable;
         
 
@@ -39,9 +41,9 @@ namespace CardGame
             AmountCards = amountCardsForPlayers;
             this._playingTable = new PlayingTable();
             //create new players
-            for (int i = 1; i <= numberOfPlayers; i++)
+            for (int i = 0; i < numberOfPlayers; i++)
             {
-                players[$"Player nr {i}"] = new Player();
+                 players.Add(new Player());
             }
             
         }

@@ -30,12 +30,12 @@ namespace CardGame
             //Radek  - zaimplementuj proszę swoją  metodę, która losuje określoną ilość kart "amountCards" z "CardsDeck"
             //i wypełnij słownik pojedyńczeg gracza - czyli słownik "Cards"
             
+            
+            //dane do testów
             Cards.Add("Opel", new SingleCard("Opel", 200, 23123, 321, 2121));
             Cards.Add("Opel1", new SingleCard("Opel11", 200, 23123, 321, 2121));
             Cards.Add("Opel2", new SingleCard("Opel22", 200, 23123, 321, 2121));
             Cards.Add("Opel3", new SingleCard("Opel33", 200, 23123, 321, 2121));
-
-            
         }
 
         

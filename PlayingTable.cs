@@ -1,12 +1,20 @@
-﻿namespace CardGame
+﻿using System;
+using System.Collections.Generic;
+
+namespace CardGame
 {
     public class PlayingTable
     {
-
-        public void CompareValuesOnPlayersCarts()
+        
+        public void CompareValuesOnPlayersCarts(Game objectGame) //czy mogę tak przekazać obiekt z innej klasy ??
         {
-            var listValuesToCompare = 54;
+            List<Player> players = objectGame.Players;
+        }
 
+        
+        public void PlayRound()
+        {
+            
         }
     }
 }

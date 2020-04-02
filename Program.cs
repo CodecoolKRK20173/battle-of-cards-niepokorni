@@ -1,11 +1,11 @@
-﻿using System;
-
-namespace CardGame
+﻿namespace CardGame
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            Game graMirek = new Game("Mirka Gra", 2, 20);
+            graMirek.PlayingTable.CompareValuesOnPlayersCarts(graMirek);
         }
     }
 }

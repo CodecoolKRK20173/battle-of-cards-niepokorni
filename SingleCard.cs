@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CardGame
+﻿namespace CardGame
 {
     public class SingleCard
     {
@@ -9,7 +7,7 @@ namespace CardGame
         public int MaxSpeed { get; set; }
         public int Acceleration { get; set; }
         public int EnginePower { get; set; }
-
+        
         
         public SingleCard(string carModel, int engineCapacity, int maxSpeed, int acceleration, int enginePower)
         {
@@ -18,8 +16,6 @@ namespace CardGame
             MaxSpeed = maxSpeed;
             Acceleration = acceleration;
             EnginePower = enginePower;
-        }   
-        
-        
+        }
     }
 }

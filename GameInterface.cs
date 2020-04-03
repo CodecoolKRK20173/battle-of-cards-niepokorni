@@ -20,7 +20,7 @@ namespace CardGame
 
 		static bool _theGameIsOver = false;
 		static Status _gameStatus = Status.START;
-		static Player[] playersObjects = new Player[4];
+		private List<string > playersName = new List<string>();
 
 
 		public static void CenterAlign(string text)
@@ -87,11 +87,24 @@ namespace CardGame
 						int numberOfPlayers = int.Parse(Console.ReadLine());
 
 						
+						for (int i = 0; i < numberOfPlayers; i++)
+						{
+							Console.WriteLine( $"Write  name for Player nr {i+1} ?");
+							string playerName = Console.ReadLine();
+							playersName.Add(playerName);
+						}
+						
 						Console.WriteLine("Write amount of Cards for Player");
 						int amountCards = int.Parse(Console.ReadLine());
 
 						Game carBattleOfCards = new Game(nameOfTheGame, numberOfPlayers, amountCards);
-						_gameStatus = Status.START;
+						int index = 0;
+						foreach (var player in carBattleOfCards.Players)
+						{
+							player.Name = playersName[index];
+							index++;
+						}
+						_gameStatus = Status.PLAY;
 						break;
 
 					/*case Status.PLAY:

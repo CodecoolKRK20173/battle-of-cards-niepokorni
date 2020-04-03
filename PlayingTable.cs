@@ -6,9 +6,8 @@ namespace CardGame
     public class PlayingTable
     {
         private readonly Game _game;
-        private Player WinningPlayer;
-        
-        
+
+
         public PlayingTable(Game game)
         {
             this._game = game;
@@ -19,10 +18,19 @@ namespace CardGame
         {
            
         }
-        
-        public void PlayRound()
+
+        public Player GetWinningPlayer()
         {
-            
+            Player winningPlayer = _game.Players[0];
+            for (int i = 0; i < _game.GetNumersOfPlayers(); i++)
+            {
+                if (_game.Players[i].StatusOfWinning == true)
+                {
+                    winningPlayer=_game.Players[i];
+                }
+            }
+            return winningPlayer;
         }
-    }
+        
+        }
 }

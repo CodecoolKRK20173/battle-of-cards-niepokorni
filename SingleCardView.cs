@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +7,10 @@ namespace CardGame
      {
          public string CardTheme;
          private string cardName;
-        private int EC;
-        private int MS;
-        private int AC;
-        private int EP;
+        private string EC;
+        private string MS;
+        private string AC;
+        private string EP;
         private Player _player;
         private string name;
 
@@ -94,6 +93,7 @@ namespace CardGame
          
      }
 }
+
 
 
 

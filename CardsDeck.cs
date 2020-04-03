@@ -5,29 +5,29 @@ namespace CardGame
 {
     public class CardsDeck
     {
-        private List<string> AllCardsDeck;
-        private readonly int amountCards = 1000;
+        private List<string> allCardsDeck = new List<string>();
 
-        public CardsDeck() //konstruktor CardsDeck, który tworzy obiekt z wypełnioną talią kart
+        public CardsDeck()
         {
-            AddCardsFromFile(amountCards);
-
+            AddCardsFromFile();
         }
-        private void AddCardsFromFile(int amountCards) //metoda wypełniająca listę AllCardsDeck elmentami z bazy danych
+        
+        
+        public List<string> GetAllCardsDeck()
         {
-            string path = "cars.csv";
+            return allCardsDeck;
+        }
+        
+        
+        private void AddCardsFromFile()
+        {
+            string path = @"C:\Users\lukas\Google Drive\CodeCool\CSharpProject\battle-of-cards-niepokorni-old\cars.csv";
             string file = File.ReadAllText(path);
             string[] linesInFile = file.Split("\n");
             for (int i = 0; i < linesInFile.Length; i++)
             {
-                AllCardsDeck.Add(linesInFile[i]);
+                allCardsDeck.Add(linesInFile[i]);
             }
-        }
-
-
-        public List<string> GetAllCardsDeck() //metoda publiczna, za pomocą której możemy pobrać gotową listę
-        {
-            return AllCardsDeck;
         }
     }
 }

@@ -12,18 +12,17 @@ namespace CardGame
         private int MS;
         private int AC;
         private int EP;
-        private SingleCard _singleCard;
-        private Player _name;
+        private Player _player;
         private string name;
 
          public SingleCardView()
          {
-            name = _name.Name;
-            cardName = _singleCard.CarModel;
-            EC = _singleCard.EngineCapacity;
-            MS = _singleCard.MaxSpeed;
-            AC = _singleCard.Acceleration;
-            EP = _singleCard.EnginePower;  
+            name = _player.Name;
+            cardName = _player.SingleCardOnPlayerHand.CarModel;
+            EC = _player.SingleCardOnPlayerHand.EngineCapacity;
+            MS = _player.SingleCardOnPlayerHand.MaxSpeed;
+            AC = _player.SingleCardOnPlayerHand.Acceleration;
+            EP = _player.SingleCardOnPlayerHand.EnginePower;  
          }
 
          public void PrintPlayerCard()
@@ -35,7 +34,7 @@ namespace CardGame
                  $@"     __________________                                     \n 
                       __|________________  |                                    \n
                    __|_________________  | |                                    \n
-                  |~P{[name]}          | | |                                    \n  
+                  |~P: {name}          | | |                                    \n  
                   |                    | | |                                    \n
                   |     {cardName}     | | |                        .------.    \n
                   |                    | | |     .------.           |S .   |    \n

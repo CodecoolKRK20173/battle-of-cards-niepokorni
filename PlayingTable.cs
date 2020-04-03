@@ -5,12 +5,19 @@ namespace CardGame
 {
     public class PlayingTable
     {
+        private readonly Game _game; 
         
-        public void CompareValuesOnPlayersCarts(Game objectGame) //czy mogę tak przekazać obiekt z innej klasy ??
+        public PlayingTable(Game game)
         {
-            List<Player> players = objectGame.Players;
+            this._game = game;
         }
 
+        
+        
+        public void CompareValuesOnPlayersCarts(Game game)
+        {
+           
+        }
         
         public void PlayRound()
         {

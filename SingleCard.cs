@@ -8,6 +8,9 @@
         public int Acceleration { get; set; }
         public int EnginePower { get; set; }
         
+        //koncepcja dla Oli
+        private SingleCardView _singleCardView;
+        
         
         public SingleCard(string carModel, int engineCapacity, int maxSpeed, int acceleration, int enginePower)
         {
@@ -16,6 +19,7 @@
             MaxSpeed = maxSpeed;
             Acceleration = acceleration;
             EnginePower = enginePower;
+            
         }
     }
 }

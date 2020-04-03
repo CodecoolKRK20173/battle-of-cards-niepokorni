@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,8 +9,8 @@ namespace CardGame
 class GameInterface
   {
          public enum Status {START, CREATE_PLAYERS, PLAY, WIN, BEST_SCORES, HOW_TO_PLAY, EXIT }
-         static bool theGameIsOver = false;
-		 static Status gameStatus = Status.START;
+         static bool _theGameIsOver = false;
+		 static Status _gameStatus = Status.START;
          static Player[] playersObjects = new Player[4];
          
          
@@ -22,47 +22,63 @@ class GameInterface
 
          static void Main(string[] args)
          {
-			while (!theGameIsOver) {
+			while (!_theGameIsOver) {
 
-				switch (gameStatus) {
+				switch (_gameStatus) {
 
+
+		public void StartGame()
+		{
+			while (!_theGameIsOver)
+				switch (_gameStatus) {
 					case Status.START:
 						Console.Title = "Battle of Cards";
-						for (int i = Console.WindowWidth - 50; i >= 0; i--) {
+						/*for (int i = Console.WindowWidth - 50; i >= 0; i--)
+						{
 							Console.Clear();
 							StartScreenDisplay(i);
 							Thread.Sleep(20);
-						}
-						CenterAlign("Welcome in Battle of Cards"); 
+						}*/
+						Console.WriteLine("Welcome in Battle of Cards"); 
 						System.Console.WriteLine("\n\n");
-						CenterAlign("MENU:\n"); 
+						Console.WriteLine("MENU:\n"); 
 						System.Console.WriteLine();
-						CenterAlign(":: 1 ::  Play\n");
-						CenterAlign(":: 2 ::  Best scores\n");
-						CenterAlign(":: 3 ::  How to play\n");
-                         CenterAlign(":: 4 ::  Exit\n");
+						Console.WriteLine(":: 1 ::  Play\n");
+						Console.WriteLine(":: 2 ::  Best scores\n");
+						Console.WriteLine(":: 3 ::  How to play\n");
+						Console.WriteLine(":: 4 ::  Exit\n");
 
 						string choice = Console.ReadLine();
 						if (choice == "1") {
-							gameStatus = Status.CREATE_PLAYERS; }
+							_gameStatus = Status.CREATE_GAME; }
 						else if (choice == "2") {
-							gameStatus = Status.BEST_SCORES; }
+							_gameStatus = Status.BEST_SCORES; }
 						else if (choice == "3") {
-							gameStatus = Status.HOW_TO_PLAY; }
-                         else if (choice == "4") {
-							gameStatus = Status.EXIT; }
+							_gameStatus = Status.HOW_TO_PLAY; }
+						else if (choice == "4") {
+							_gameStatus = Status.EXIT; }
 						else {
 							Console.WriteLine("Choose a right option from menu.");}
 						break;
+					
+					
+					case Status.CREATE_GAME:
 
-					case Status.CREATE_PLAYERS:
-                     //odnosnik do metody z wyborem liczby graczy i przypisania imion
-                     //Game.TakeCardsToStart();  <-- metoda do losowania kart na start
-						
-						gameStatus = Status.PLAY;
+						Console.WriteLine("Write name of the game:");
+						string nameOfTheGame = Console.ReadLine();
+
+						Console.WriteLine("How many players ? ");
+						int numberOfPlayers = int.Parse(Console.ReadLine());
+
+						Console.WriteLine("Write amount of Cards for Player");
+						int amountCards = int.Parse(Console.ReadLine());
+
+						Game carBattleOfCards = new Game(nameOfTheGame, numberOfPlayers, amountCards);
+						_gameStatus = Status.PLAY;
 						break;
+					
 
-					case Status.PLAY:
+					/*case Status.PLAY:
                          bool winStatus = false;
                          foreach (string player in playersObjects) {
 
@@ -71,7 +87,7 @@ class GameInterface
 
                           if (player has won) {  
                          winStatus = true;
-						gameStatus = Status.WIN;
+						_gameStatus = Status.WIN;
                          winnerName = player.Name;
 						break; 
                            }
@@ -83,14 +99,14 @@ class GameInterface
                          Console.Clear();
                          Console.WriteLine($"\nCongrats!! {winnerName} - You are a winner!");
                          Thread.Sleep(5000);
-                         gameStatus = Status.START;
+                         _gameStatus = Status.START;
                          break;
 					
 					case Status.EXIT:
 						Console.Clear();
 						Console.WriteLine();
-						theGameIsOver = true;
-						break;
+						_theGameIsOver = true;
+						break;*/
 				}
 			}
 		} 

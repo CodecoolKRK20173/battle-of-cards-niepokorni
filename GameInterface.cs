@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,6 +16,10 @@ class GameInterface
          
          static List <string> playersNamesInitial = new List<string> { "Player1", "Player2", "Player3", "Player4" };
 
+		 public static void CenterAlign(string text) {
+		    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (text.Length / 2)) + "}", text));
+		}
+
          static void Main(string[] args)
          {
 			while (!theGameIsOver) {
@@ -26,7 +30,7 @@ class GameInterface
 						Console.Title = "Battle of Cards";
 						for (int i = Console.WindowWidth - 50; i >= 0; i--) {
 							Console.Clear();
-							Game.StartScreenDisplay(i);
+							StartScreenDisplay(i);
 							Thread.Sleep(20);
 						}
 						CenterAlign("Welcome in Battle of Cards"); 
@@ -70,8 +74,9 @@ class GameInterface
 						gameStatus = Status.WIN;
                          winnerName = player.Name;
 						break; 
+                           }
 
-                         }
+						 }
                          break;
 
                      case Status.WIN:
@@ -89,7 +94,25 @@ class GameInterface
 				}
 			}
 		} 
+
+			public static void StartScreenDisplay(int textNiepokorniCards) {
+				System.Console.WriteLine("\t\tLet's play a serious game, mate!");
+				System.Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t TEST TEST CZY TO WIDAĆ? ");
+				// Console.SetCursorPosition(textShift, (Console.WindowHeight/2));
+				string[] NiepokorniASCII = {
+					@".------..------..------..------..------..------..------..------..------..------.",
+					@"|N.--. ||I.--. ||E.--. ||P.--. ||O.--. ||K.--. ||O.--. ||R.--. ||N.--. ||I.--. |",
+					@"| :(): || (\/) || (\/) || :/\: || :/\: || :/\: || :/\: || :(): || :(): || (\/) |",
+					@"| ()() || :\/: || :\/: || (__) || :\/: || :\/: || :\/: || ()() || ()() || :\/: |",
+					@"| '--'N|| '--'I|| '--'E|| '--'P|| '--'O|| '--'K|| '--'O|| '--'R|| '--'N|| '--'I|",
+					@"`------'`------'`------'`------'`------'`------'`------'`------'`------'`------'"
+				};
+				foreach (string niepokorniLine in NiepokorniASCII) {
+					Console.SetCursorPosition(textNiepokorniCards, Console.CursorTop);
+					System.Console.WriteLine(niepokorniLine);
+			}
+		}
      }
 }
-*/
+
 

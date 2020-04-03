@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ namespace CardGame
 {
 class GameInterface
   {
-         public enum Status {START, CREATE_PLAYERS, PLAY, WIN, BEST_SCORES, HOW_TO_PLAY, EXIT }
+         public enum Status {START, CREATE_GAME, PLAY, WIN, BEST_SCORES, HOW_TO_PLAY, EXIT }
          static bool _theGameIsOver = false;
 		 static Status _gameStatus = Status.START;
          static Player[] playersObjects = new Player[4];
@@ -27,10 +27,6 @@ class GameInterface
 				switch (_gameStatus) {
 
 
-		public void StartGame()
-		{
-			while (!_theGameIsOver)
-				switch (_gameStatus) {
 					case Status.START:
 						Console.Title = "Battle of Cards";
 						/*for (int i = Console.WindowWidth - 50; i >= 0; i--)

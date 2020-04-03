@@ -13,10 +13,13 @@ namespace CardGame
         private int AC;
         private int EP;
         private SingleCard _singleCard;
+        private Player _name;
+        private string name;
 
          public SingleCardView()
          {
-             cardName = _singleCard.CarModel;
+            name = _name.Name;
+            cardName = _singleCard.CarModel;
             EC = _singleCard.EngineCapacity;
             MS = _singleCard.MaxSpeed;
             AC = _singleCard.Acceleration;
@@ -32,7 +35,7 @@ namespace CardGame
                  $@"     __________________                                     \n 
                       __|________________  |                                    \n
                    __|_________________  | |                                    \n
-                  |~P{[index]}         | | |                                    \n  
+                  |~P{[name]}          | | |                                    \n  
                   |                    | | |                                    \n
                   |     {cardName}     | | |                        .------.    \n
                   |                    | | |     .------.           |S .   |    \n

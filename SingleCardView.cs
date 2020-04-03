@@ -25,23 +25,26 @@ namespace CardGame
             EP = _player.SingleCardOnPlayerHand.EnginePower;  
          }
 
+        public void PrintCardWithReplaceData() {
+
+        }
+
          public void PrintPlayerCard()
          {
-             //chcę na górze karty dać tylko nr gracza, który aktualnie będzie wybierał kartę, nie wiem czy robimy playerów po indexach?
-
+             
              Console.WriteLine(
                  
                  $@"     __________________                                     \n 
                       __|________________  |                                    \n
                    __|_________________  | |                                    \n
-                  |~P: {name}          | | |                                    \n  
+                  |~P: {name:12}    | | |                                    \n  
                   |                    | | |                                    \n
-                  |     {cardName}     | | |                        .------.    \n
+                  |   {cardName:13}    | | |                        .------.    \n
                   |                    | | |     .------.           |S .   |    \n
-                  |   EngineCap:{EC}   | | |     |C_  _ |    .------; / \  |    \n
-                  |   MaxSpeed:{MS}    | | |     |( \/ )|-----. _   |(_,_) |    \n
-                  |  Acceleration:{AC} | | |     | \  / | /\  |( )  |  I  S|    \n
-                  |  EnginePower:{EP}  | | |     |  \/ C|/  \ |_x_) |------'    \n
+                  |   EngineCap:{EC:4} | | |     |C_  _ |    .------; / \  |    \n
+                  |   MaxSpeed:{MS:4}  | | |     |( \/ )|-----. _   |(_,_) |    \n
+                  | Acceleration:{AC:4} | | |     | \  / | /\  |( )  |  I  S|    \n
+                  |  EnginePower:{EP:4} | | |     |  \/ C|/  \ |_x_) |------'    \n
                   |                    | | |     `-----+'\  / | Y  R|           \n
                   |      ______        | | |           |  \/ A|-----'           \n   
                   |     /|_||_\`.__    | | |           `------'                 \n        

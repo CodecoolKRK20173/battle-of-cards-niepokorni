@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,62 +5,79 @@ using System.Threading;
 
 namespace CardGame
 {
-class GameInterface
-  {
-         public enum Status {START, CREATE_PLAYERS, PLAY, WIN, BEST_SCORES, HOW_TO_PLAY, EXIT }
-         static bool _theGameIsOver = false;
-		 static Status _gameStatus = Status.START;
-         static Player[] playersObjects = new Player[4];
-         
-         
-         static List <string> playersNamesInitial = new List<string> { "Player1", "Player2", "Player3", "Player4" };
-
-		 public static void CenterAlign(string text) {
-		    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (text.Length / 2)) + "}", text));
+	class GameInterface
+	{
+		public enum Status
+		{
+			START,
+			CREATE_GAME,
+			PLAY,
+			WIN,
+			BEST_SCORES,
+			HOW_TO_PLAY,
+			EXIT
 		}
 
-         static void Main(string[] args)
-         {
-			while (!_theGameIsOver) {
+		static bool _theGameIsOver = false;
+		static Status _gameStatus = Status.START;
+		static Player[] playersObjects = new Player[4];
 
-				switch (_gameStatus) {
+
+		public static void CenterAlign(string text)
+		{
+			Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (text.Length / 2)) + "}", text));
+		}
 
 
 		public void StartGame()
 		{
 			while (!_theGameIsOver)
-				switch (_gameStatus) {
+				switch (_gameStatus)
+				{
+
 					case Status.START:
 						Console.Title = "Battle of Cards";
-						/*for (int i = Console.WindowWidth - 50; i >= 0; i--)
+						for (int i = Console.WindowWidth - 50; i >= 0; i--)
 						{
 							Console.Clear();
 							StartScreenDisplay(i);
 							Thread.Sleep(20);
-						}*/
-						Console.WriteLine("Welcome in Battle of Cards"); 
-						System.Console.WriteLine("\n\n");
-						Console.WriteLine("MENU:\n"); 
-						System.Console.WriteLine();
-						Console.WriteLine(":: 1 ::  Play\n");
-						Console.WriteLine(":: 2 ::  Best scores\n");
-						Console.WriteLine(":: 3 ::  How to play\n");
-						Console.WriteLine(":: 4 ::  Exit\n");
+						}
+
+						CenterAlign("Welcome in Battle of Cards");
+
+						CenterAlign("MENU:\n");
+
+						CenterAlign(":: 1 ::  Play\n");
+						CenterAlign(":: 2 ::  Best scores\n");
+						CenterAlign(":: 3 ::  How to play\n");
+						CenterAlign(":: 4 ::  Exit");
 
 						string choice = Console.ReadLine();
-						if (choice == "1") {
-							_gameStatus = Status.CREATE_GAME; }
-						else if (choice == "2") {
-							_gameStatus = Status.BEST_SCORES; }
-						else if (choice == "3") {
-							_gameStatus = Status.HOW_TO_PLAY; }
-						else if (choice == "4") {
-							_gameStatus = Status.EXIT; }
-						else {
-							Console.WriteLine("Choose a right option from menu.");}
+						if (choice == "1")
+						{
+							_gameStatus = Status.CREATE_GAME;
+						}
+						else if (choice == "2")
+						{
+							_gameStatus = Status.BEST_SCORES;
+						}
+						else if (choice == "3")
+						{
+							_gameStatus = Status.HOW_TO_PLAY;
+						}
+						else if (choice == "4")
+						{
+							_gameStatus = Status.EXIT;
+						}
+						else
+						{
+							Console.WriteLine("Choose a right option from menu.");
+						}
+
 						break;
-					
-					
+
+
 					case Status.CREATE_GAME:
 
 						Console.WriteLine("Write name of the game:");
@@ -70,13 +86,13 @@ class GameInterface
 						Console.WriteLine("How many players ? ");
 						int numberOfPlayers = int.Parse(Console.ReadLine());
 
+						
 						Console.WriteLine("Write amount of Cards for Player");
 						int amountCards = int.Parse(Console.ReadLine());
 
 						Game carBattleOfCards = new Game(nameOfTheGame, numberOfPlayers, amountCards);
-						_gameStatus = Status.PLAY;
+						_gameStatus = Status.START;
 						break;
-					
 
 					/*case Status.PLAY:
                          bool winStatus = false;
@@ -108,27 +124,31 @@ class GameInterface
 						_theGameIsOver = true;
 						break;*/
 				}
-			}
-		} 
+		}
 
-			public static void StartScreenDisplay(int textNiepokorniCards) {
-				System.Console.WriteLine("\t\tLet's play a serious game, mate!");
-				System.Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t TEST TEST CZY TO WIDAĆ? ");
-				// Console.SetCursorPosition(textShift, (Console.WindowHeight/2));
-				string[] NiepokorniASCII = {
-					@".------..------..------..------..------..------..------..------..------..------.",
-					@"|N.--. ||I.--. ||E.--. ||P.--. ||O.--. ||K.--. ||O.--. ||R.--. ||N.--. ||I.--. |",
-					@"| :(): || (\/) || (\/) || :/\: || :/\: || :/\: || :/\: || :(): || :(): || (\/) |",
-					@"| ()() || :\/: || :\/: || (__) || :\/: || :\/: || :\/: || ()() || ()() || :\/: |",
-					@"| '--'N|| '--'I|| '--'E|| '--'P|| '--'O|| '--'K|| '--'O|| '--'R|| '--'N|| '--'I|",
-					@"`------'`------'`------'`------'`------'`------'`------'`------'`------'`------'"
-				};
-				foreach (string niepokorniLine in NiepokorniASCII) {
-					Console.SetCursorPosition(textNiepokorniCards, Console.CursorTop);
-					System.Console.WriteLine(niepokorniLine);
+
+		public void StartScreenDisplay(int textNiepokorniCards)
+		{
+			System.Console.WriteLine("\t\tLet's play a serious game, mate!");
+			System.Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t TEST TEST CZY TO WIDAĆ? ");
+
+			// Console.SetCursorPosition(textShift, (Console.WindowHeight/2));
+			string[] NiepokorniASCII =
+			{
+				@".------..------..------..------..------..------..------..------..------..------.",
+				@"|N.--. ||I.--. ||E.--. ||P.--. ||O.--. ||K.--. ||O.--. ||R.--. ||N.--. ||I.--. |",
+				@"| :(): || (\/) || (\/) || :/\: || :/\: || :/\: || :/\: || :(): || :(): || (\/) |",
+				@"| ()() || :\/: || :\/: || (__) || :\/: || :\/: || :\/: || ()() || ()() || :\/: |",
+				@"| '--'N|| '--'I|| '--'E|| '--'P|| '--'O|| '--'K|| '--'O|| '--'R|| '--'N|| '--'I|",
+				@"`------'`------'`------'`------'`------'`------'`------'`------'`------'`------'"
+			};
+			foreach (string niepokorniLine in NiepokorniASCII)
+			{
+				Console.SetCursorPosition(textNiepokorniCards, Console.CursorTop);
+				System.Console.WriteLine(niepokorniLine);
 			}
 		}
-     }
+	}
 }
 
-
+		

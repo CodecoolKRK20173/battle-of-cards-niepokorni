@@ -1,11 +1,16 @@
-﻿namespace CardGame
+﻿using System;
+
+namespace CardGame
 {
-    public class Program
+    class Program
     {
-        private static void Main(string[] args)
+        static void Main(string[] args)
         {
-            GameInterface interfaceGame = new GameInterface();
-            interfaceGame.StartGame();
+            GameInterface newGame = new GameInterface();
+            newGame.StartGame();
+
+
+
         }
     }
 }

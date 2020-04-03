@@ -8,7 +8,7 @@ namespace CardGame
         public string Name { get; set; }
         public SingleCard SingleCardOnPlayerHand { get; private set; }
         public PlayerCardsDeck PlayerCardsDeck { get; }
-        public bool WiningPlayer { get; set; }
+        public bool WiningPlayer { get; set; } // zobaczymy
         
         
         public Player()
@@ -22,13 +22,13 @@ namespace CardGame
         {
             var random = new Random();
             var index = random.Next(PlayerCardsDeck.GetCards().Count);
-            var randomSingleElementAt = PlayerCardsDeck.GetCards().ElementAt(index);
-            SingleCardOnPlayerHand = randomSingleElementAt.Value;
+            var randomSingleCard = PlayerCardsDeck.GetCards()[index];
+            SingleCardOnPlayerHand = randomSingleCard;
         }
 
 
         // metoda do doszlifowania
-        public int ChoseValuFromSingleCardToPlay(int numberValueOnTheCard)
+        public string ChoseValuFromSingleCardOnPlayerHand(int numberValueOnTheCard)
         {
             switch (numberValueOnTheCard)
             {
@@ -44,8 +44,7 @@ namespace CardGame
                     Console.WriteLine("Wrong Number");
                     break;
             }
-
-            return 0;
+            return "Wrong number";
         }
     }
 }

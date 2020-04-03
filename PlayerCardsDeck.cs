@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CardGame
 {
@@ -15,32 +18,34 @@ namespace CardGame
             DrawCardsFromCardsDeck(AmountCards);
         }
 
-
         public Dictionary<string, SingleCard> GetCards()
         {
             return Cards;
         }
 
 
-        private void DrawCardsFromCardsDeck(int AmountCards) //metoda losujący karty dla każdego gracza 
+        private string DrawCardsFromCardsDeck(int AmountCards) //metoda losujący karty dla każdego gracza 
         {
+            string PlayerCards = "";
             var cardsDeck = new CardsDeck();
             var allCardsDeck = cardsDeck.GetAllCardsDeck();
-            //Radek  - zaimplementuj proszę swoją  metodę, która losuje określoną ilość kart "amountCards" z "CardsDeck"
-            //i wypełnij słownik pojedyńczeg gracza - czyli słownik "Cards"
 
+            Random losuj = new Random();
+            int i = 0;
+            while(i < AmountCards)
+            {
+                PlayerCards = allCardsDeck[losuj.Next(allCardsDeck.Count)];
+                allCardsDeck.Remove(PlayerCards);
+                System.Console.WriteLine(PlayerCards);
+                i++;
 
-            //dane do testów
-            Cards.Add("Opel", new SingleCard("Opel", 200, 23123, 321, 2121));
-            Cards.Add("Opel1", new SingleCard("Opel11", 200, 23123, 321, 2121));
-            Cards.Add("Opel2", new SingleCard("Opel22", 200, 23123, 321, 2121));
-            Cards.Add("Opel3", new SingleCard("Opel33", 200, 23123, 321, 2121));
+            }
+            return PlayerCards;
         }
-
-
+        
         private void AddSingleCardToCards(SingleCard card) //metoda dodająca pojedyńczą kartę do słownika "Cards"
         {
-            // ...
+            
         }
     }
 }

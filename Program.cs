@@ -4,8 +4,8 @@
     {
         private static void Main(string[] args)
         {
-            Game graMirek = new Game("Mirka Gra", 2, 20);
-            graMirek.PlayingTable.CompareValuesOnPlayersCarts(graMirek);
+            GameInterface interfaceGame = new GameInterface();
+            interfaceGame.StartGame();
         }
     }
 }

@@ -4,7 +4,6 @@ namespace CardGame
 {
     public class Game
     {
-        
         public string NameOfTheGame { get; set; }
 
         public int NumberOfPlayers { get; set; }
@@ -20,12 +19,15 @@ namespace CardGame
             NameOfTheGame = nameOfTheGame;
             NumberOfPlayers = numberOfPlayers;
             AmountCards = amountCardsForPlayers;
-            PlayingTable = new PlayingTable();
+            PlayingTable = new PlayingTable(this);
             //create new players
             for (var i = 0; i < numberOfPlayers; i++) Players.Add(new Player());
         }
 
-
-
+        
+        public int GetNumersOfPlayers()
+        {
+            return Players.Count;
+        }
     }
 }

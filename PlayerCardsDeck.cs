@@ -33,7 +33,7 @@ namespace CardGame
             //dane do testów
             Cards.Add("Opel", new SingleCard("Opel", 200, 23123, 321, 2121));
             Cards.Add("Opel1", new SingleCard("Opel11", 200, 23123, 321, 2121));
-            Cards.Add("Opel2", new SingleCard("Opel22", 200, 23123, 321, 2121));
+            Cards.Add("Mazda", new SingleCard("Opel22", 200, 23123, 321, 2121));
             Cards.Add("Opel3", new SingleCard("Opel33", 200, 23123, 321, 2121));
         }
 

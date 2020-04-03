@@ -8,6 +8,7 @@ namespace CardGame
         public string Name { get; set; }
         public SingleCard SingleCardOnPlayerHand { get; private set; }
         public PlayerCardsDeck PlayerCardsDeck { get; }
+        public bool WiningPlayer { get; set; }
         
         
         public Player()

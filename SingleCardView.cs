@@ -11,10 +11,9 @@ namespace CardGame
         private string MS;
         private string AC;
         private string EP;
-        private Player _player;
         private string name;
 
-         public SingleCardView()
+         public SingleCardView(Player _player)
          {
             name = _player.Name;
             cardName = _player.SingleCardOnPlayerHand.CarModel;

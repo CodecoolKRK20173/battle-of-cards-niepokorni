@@ -8,9 +8,6 @@ namespace CardGame
         {
             GameInterface newGame = new GameInterface();
             newGame.StartGame();
-
-
-
         }
     }
 }

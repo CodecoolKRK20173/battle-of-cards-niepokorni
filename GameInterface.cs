@@ -20,7 +20,8 @@ namespace CardGame
 
 		static bool _theGameIsOver = false;
 		static Status _gameStatus = Status.START;
-		static Player[] playersObjects = new Player[4];
+		private List<string > playersName = new List<string>();
+		private Game _game;
 
 
 		public static void CenterAlign(string text)
@@ -45,9 +46,7 @@ namespace CardGame
 						}
 
 						CenterAlign("Welcome in Battle of Cards");
-
 						CenterAlign("MENU:\n");
-
 						CenterAlign(":: 1 ::  Play\n");
 						CenterAlign(":: 2 ::  Best scores\n");
 						CenterAlign(":: 3 ::  How to play\n");
@@ -87,33 +86,39 @@ namespace CardGame
 						int numberOfPlayers = int.Parse(Console.ReadLine());
 
 						
+						for (int i = 0; i < numberOfPlayers; i++)
+						{
+							Console.WriteLine( $"Write  name for Player nr {i+1} ?");
+							string playerName = Console.ReadLine();
+							playersName.Add(playerName);
+						}
+						
 						Console.WriteLine("Write amount of Cards for Player");
 						int amountCards = int.Parse(Console.ReadLine());
 
-						Game carBattleOfCards = new Game(nameOfTheGame, numberOfPlayers, amountCards);
-						_gameStatus = Status.START;
+						_game = new Game(nameOfTheGame, numberOfPlayers, amountCards);
+						int index = 0;
+						foreach (var player in _game.Players)
+						{
+							player.Name = playersName[index];
+							index++;
+						}
+
+						_game.Players[0].StatusOfWinning = true;
+						_gameStatus = Status.PLAY;
 						break;
 
-					/*case Status.PLAY:
-                         bool winStatus = false;
-                         foreach (string player in playersObjects) {
-
-						//metody do grania
-
-
-                          if (player has won) {  
-                         winStatus = true;
-						_gameStatus = Status.WIN;
-                         winnerName = player.Name;
-						break; 
-                           }
-
-						 }
-                         break;
+					case Status.PLAY:
+						var playerWhoStart = _game.PlayingTable.GetWinningPlayer(); //ustawienia gracza rozgrywającego
+						SingleCardView playerSingleCardView = new SingleCardView(playerWhoStart);
+						playerSingleCardView.PrintPlayerCard();
+						Console.ReadLine();
+						
+						break;
 
                      case Status.WIN:
                          Console.Clear();
-                         Console.WriteLine($"\nCongrats!! {winnerName} - You are a winner!");
+                         Console.WriteLine($"\nCongrats!!  - You are a winner!");
                          Thread.Sleep(5000);
                          _gameStatus = Status.START;
                          break;
@@ -122,7 +127,7 @@ namespace CardGame
 						Console.Clear();
 						Console.WriteLine();
 						_theGameIsOver = true;
-						break;*/
+						break;
 				}
 		}
 

@@ -41,8 +41,9 @@ namespace CardGame
 						for (int i = Console.WindowWidth - 50; i >= 0; i--)
 						{
 							Console.Clear();
-							StartScreenDisplay(i);
-							Thread.Sleep(20);
+							PrintPlayersCards();
+							//StartScreenDisplay(i);
+							//Thread.Sleep(20);
 						}
 
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");

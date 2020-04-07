@@ -43,8 +43,10 @@ namespace CardGame
                         for(int i = 0; i < reader.FieldCount; i++)
                         {
                             message += ","+reader.GetString(i);
+
                         }
-                        System.Console.WriteLine(message.TrimStart(','));
+                        message = message.TrimStart(',');
+                        System.Console.WriteLine(message);
                         allCardsDeck.Add(message);
                     }
                 }

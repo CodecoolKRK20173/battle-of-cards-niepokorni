@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace CardGame
 {
@@ -21,13 +23,32 @@ namespace CardGame
         
         private void AddCardsFromFile()
         {
-            string path = @"C:\Users\lukas\Google Drive\CodeCool\CSharpProject\battle-of-cards-niepokorni-old\cars.csv";
-            string file = File.ReadAllText(path);
-            string[] linesInFile = file.Split("\n");
-            for (int i = 0; i < linesInFile.Length; i++)
+            var connectionStringBuilder = new SqliteConnectionStringBuilder();
+            
+            connectionStringBuilder.DataSource = "./cars.db";
+
+            using(var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
             {
-                allCardsDeck.Add(linesInFile[i]);
-            }
+                connection.Open();
+
+                // read records
+
+                var selectCmd = connection.CreateCommand();
+                selectCmd.CommandText = "SELECT * FROM cars";
+                using(var reader = selectCmd.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        var message = "";
+                        for(int i = 0; i < reader.FieldCount; i++)
+                        {
+                            message += ","+reader.GetString(i);
+                        }
+                        System.Console.WriteLine(message.TrimStart(','));
+                        allCardsDeck.Add(message);
+                    }
+                }
+            }    
         }
     }
 }

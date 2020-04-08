@@ -42,11 +42,11 @@ namespace CardGame
 						for (int i = Console.WindowWidth - 50; i >= 0; i--)
 						{
 							Console.Clear();
-							StartScreenDisplay(i);
-							Thread.Sleep(20);
+							PrintPlayersCards();
+							//StartScreenDisplay(i);
+							//Thread.Sleep(20);
 						}
-
-						CenterAlign("Welcome in Battle of Cards");
+						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
 						CenterAlign("MENU:\n");
 						CenterAlign(":: 1 ::  Play\n");
 						CenterAlign(":: 2 ::  Best scores\n");
@@ -132,13 +132,29 @@ namespace CardGame
 				}
 		}
 
+         public void PrintPlayersCards() {
+             foreach (string line in PlayerCardsToPrint) {
+                 CenterAlign(line);
+             }}
 
+		public readonly List<string> PlayerCardsToPrint = new List<string>  {
+             
+				@".------..------..------..------..------..------..------..------..------..------.",
+				@"|N.--. ||I.--. ||E.--. ||P.--. ||O.--. ||K.--. ||O.--. ||R.--. ||N.--. ||I.--. |",
+				@"| :(): || (\/) || (\/) || :/\: || :/\: || :/\: || :/\: || :(): || :(): || (\/) |",
+				@"| ()() || :\/: || :\/: || (__) || :\/: || :\/: || :\/: || ()() || ()() || :\/: |",
+				@"| '--'N|| '--'I|| '--'E|| '--'P|| '--'O|| '--'K|| '--'O|| '--'R|| '--'N|| '--'I|",
+				@"`------'`------'`------'`------'`------'`------'`------'`------'`------'`------",
+				"\n\n"
+         };	 
+
+
+		/*
 		public void StartScreenDisplay(int textNiepokorniCards)
 		{
 			System.Console.WriteLine("\t\tLet's play a serious game, mate!");
 			System.Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t TEST TEST CZY TO WIDAĆ? ");
 
-			// Console.SetCursorPosition(textShift, (Console.WindowHeight/2));
 			string[] NiepokorniASCII =
 			{
 				@".------..------..------..------..------..------..------..------..------..------.",
@@ -152,8 +168,11 @@ namespace CardGame
 			{
 				Console.SetCursorPosition(textNiepokorniCards, Console.CursorTop);
 				System.Console.WriteLine(niepokorniLine);
+				
 			}
 		}
+
+		*/
 	}
 }
 

@@ -45,7 +45,6 @@ namespace CardGame
 							//StartScreenDisplay(i);
 							//Thread.Sleep(20);
 						}
-
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
 						CenterAlign("MENU:\n");
 						CenterAlign(":: 1 ::  Play\n");

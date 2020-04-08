@@ -22,6 +22,7 @@ namespace CardGame
 		static Status _gameStatus = Status.START;
 		private List<string > playersName = new List<string>();
 		private Game _game;
+		//public Animation animation;
 
 
 		public static void CenterAlign(string text)
@@ -48,10 +49,10 @@ namespace CardGame
 
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
 						CenterAlign("MENU:\n");
-						CenterAlign(":: 1 ::  Play\n");
-						CenterAlign(":: 2 ::  Best scores\n");
-						CenterAlign(":: 3 ::  How to play\n");
-						CenterAlign(":: 4 ::  Exit");
+						CenterAlign(":: 1 ::  Play  ::      	\n");
+						CenterAlign(":: 2 ::  Best scores  ::	\n");
+						CenterAlign(":: 3 ::  How to play  ::	\n");
+						CenterAlign(":: 4 ::  Exit  ::       	 ");
 
 						string choice = Console.ReadLine();
 						if (choice == "1")

@@ -50,10 +50,10 @@ namespace CardGame
 						Console.ForegroundColor = ConsoleColor.Magenta;
 						CenterAlign("M E N U\n");
 						Console.ForegroundColor = ConsoleColor.DarkGreen;
-						CenterAlign(":: 1 ::  Play\n");
-						CenterAlign(":: 2 ::  Best scores\n");
-						CenterAlign(":: 3 ::  How to play\n");
-						CenterAlign(":: 4 ::  Exit");
+						CenterAlign(":: 1 ::  Play  ::            \n");
+						CenterAlign(":: 2 ::  Best scores  ::     \n");
+						CenterAlign(":: 3 ::  How to play  ::     \n");
+						CenterAlign(":: 4 ::  Exit  ::             ");
 						Console.WriteLine();
 						Console.WriteLine();
 						Console.Write("Choose a right option from menu: ");

@@ -98,21 +98,28 @@ namespace CardGame
 						int amountCards = int.Parse(Console.ReadLine());
 
 						_game = new Game(nameOfTheGame, numberOfPlayers, amountCards);
+
+						//add names for players
 						int index = 0;
 						foreach (var player in _game.Players)
 						{
 							player.Name = playersName[index];
 							index++;
 						}
-
-						_game.Players[0].StatusOfWinning = true;
+						
+						_game.Players[0].StatusOfWinning = true; //declare player who start the game
 						_gameStatus = Status.PLAY;
 						break;
 
 					case Status.PLAY:
-						var playerWhoStart = _game.PlayingTable.GetWinningPlayer(); //ustawienia gracza rozgrywającego
-						SingleCardView playerSingleCardView = new SingleCardView(playerWhoStart);
-						playerSingleCardView.PrintPlayerCard();
+						var mainPlayerAtTable = _game.PlayingTable.GetWinningPlayer(); 
+						
+						SingleCardView playerSingleCardView = new SingleCardView();
+						
+						playerSingleCardView.PrintCardOfMainPlayerAtTable(mainPlayerAtTable);
+						playerSingleCardView.PrintSingleCard(mainPlayerAtTable);
+						playerSingleCardView.PrintSingleWinnerCard(mainPlayerAtTable);
+						
 						Console.ReadLine();
 						
 						break;

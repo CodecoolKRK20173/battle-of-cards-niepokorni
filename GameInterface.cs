@@ -46,13 +46,14 @@ namespace CardGame
 							//StartScreenDisplay(i);
 							//Thread.Sleep(20);
 						}
-
+						Console.ForegroundColor = ConsoleColor.Blue;
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
 						CenterAlign("MENU:\n");
 						CenterAlign(":: 1 ::  Play  ::      	\n");
 						CenterAlign(":: 2 ::  Best scores  ::	\n");
 						CenterAlign(":: 3 ::  How to play  ::	\n");
 						CenterAlign(":: 4 ::  Exit  ::       	 ");
+						Console.ResetColor();
 
 						string choice = Console.ReadLine();
 						if (choice == "1")

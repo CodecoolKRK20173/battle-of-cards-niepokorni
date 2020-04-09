@@ -45,13 +45,19 @@ namespace CardGame
 							//StartScreenDisplay(i);
 							//Thread.Sleep(20);
 						}
-
+						Console.ForegroundColor = ConsoleColor.Blue;
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
-						CenterAlign("MENU:\n");
+						Console.ForegroundColor = ConsoleColor.Magenta;
+						CenterAlign("M E N U\n");
+						Console.ForegroundColor = ConsoleColor.DarkGreen;
 						CenterAlign(":: 1 ::  Play\n");
 						CenterAlign(":: 2 ::  Best scores\n");
 						CenterAlign(":: 3 ::  How to play\n");
 						CenterAlign(":: 4 ::  Exit");
+						Console.WriteLine();
+						Console.WriteLine();
+						Console.Write("Choose a right option from menu: ");
+						Console.ResetColor();
 
 						string choice = Console.ReadLine();
 						if (choice == "1")
@@ -70,16 +76,13 @@ namespace CardGame
 						{
 							_gameStatus = Status.EXIT;
 						}
-						else
-						{
-							Console.WriteLine("Choose a right option from menu.");
-						}
+
 
 						break;
 
 
 					case Status.CREATE_GAME:
-
+				
 						Console.WriteLine("Write name of the game:");
 						string nameOfTheGame = Console.ReadLine();
 

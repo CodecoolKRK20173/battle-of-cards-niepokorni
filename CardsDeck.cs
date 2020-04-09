@@ -46,7 +46,7 @@ namespace CardGame
 
                         }
                         message = message.TrimStart(',');
-                        System.Console.WriteLine(message);
+                        // System.Console.WriteLine(message);
                         allCardsDeck.Add(message);
                     }
                 }

@@ -27,71 +27,35 @@ namespace CardGame
 
         }
 
-         public void PrintPlayerCard()
-         {
-             
-             Console.WriteLine(
+        public void PrintPlayerCard()
+        {
+            Console.WriteLine(
                  
-                 $@"     __________________                                     \n 
-                      __|________________  |                                    \n
-                   __|_________________  | |                                    \n
-                  |~P: {name:12}    | | |                                    \n  
-                  |                    | | |                                    \n
-                  |   {cardName:14}   | | |                        .------.    \n
-                  |                    | | |     .------.           |S .   |    \n
-                  |   EngineCap:{EC:4} | | |     |C_  _ |    .------; / \  |    \n
-                  |   MaxSpeed:{MS:4}  | | |     |( \/ )|-----. _   |(_,_) |    \n
-                  | Acceleration:{AC:4} | | |     | \  / | /\  |( )  |  I  S|    \n
-                  |  EnginePower:{EP:4} | | |     |  \/ C|/  \ |_x_) |------'    \n
-                  |                    | | |     `-----+'\  / | Y  R|           \n
-                  |      ______        | | |           |  \/ A|-----'           \n   
-                  |     /|_||_\`.__    | | |           `------'                 \n        
-                  |    (   _    _ _\   | | |                                    \n
-                  |    =`-(_)--(_)-'   | |_|                                    \n
-                  |                    |_|                                      \n
-                  |____𝕭𝖆𝖙𝖙𝖑𝖊_𝖔𝖋_𝕮𝖆𝖗𝖉𝖘____| "
+$@"                         __________________                                   
+                      __|________________  |                                    
+                   __|_________________  | |                                    
+                  |Player: {name.PadRight(8)}    | | |                                      
+                  |                    | | |                                    
+                  |   {cardName.PadRight(15)}  | | |                        .------.    
+                  |                    | | |     .------.           |S .   |    
+                  |   EngineCap: {EC.PadRight(4)}  | | |     |C_  _ |    .------; / \  |    
+                  |   MaxSpeed: {MS.PadRight(4)}   | | |     |( \/ )|-----. _   |(_,_) |    
+                  | Acceleration: {AC.PadRight(4)} | | |     | \  / | /\  |( )  |  I  S|    
+                  |  EnginePower: {EP.PadRight(4)} | | |     |  \/ C|/  \ |_x_) |------'    
+                  |                    | | |     `-----+'\  / | Y  R|           
+                  |      ______        | | |           |  \/ A|-----'            
+                  |     /|_||_\`.__    | | |           `------'                        
+                  |    (   _    _ _\   | | |                                   
+                  |    =`-(_)--(_)-'   | |_|                                   
+                  |                    |_|                                     
+                  |_______C.A.R.S______| "
                  
                  );
-                }
-
-
-        /*
-         public readonly List<string> PlayerCardsToPrint = new List<string>  {
-             
-         "        __________________ ",
-         "     __|________________  |",
-         "  __|_________________  | |",
-         " |                    | | |",
-         " |     CARD NAME      | | |",
-         " |                    | | |",
-         " |   EngineCap: EC    | | |",
-         " |   MaxSpeed: MS     | | |",
-         " |  Acceleration: AC  | | |",
-         " |  EnginePower: EP   | | |",
-         " |                    | | |",
-         " |      ______        | | |",
-        @" |     /|_||_\`.__    | | |",
-        @" |    (   _    _ _\   | | |",
-         " |    =`-(_)--(_)-'   | |_|",
-         " |                    |_|",
-        @" |____𝕭𝖆𝖙𝖙𝖑𝖊_𝖔𝖋_𝕮𝖆𝖗𝖉𝖘____| ",
-         };
-
-        */
-
-
-
-         /*
-         public void PrintPlayersCards() {
-             foreach (string line in PlayerCardsToPrint) {
-                 System.Console.WriteLine(line);
-             }
-         }
-         */
-         
-         
-     }
+        }
+    }        
 }
+
+
 
 
 

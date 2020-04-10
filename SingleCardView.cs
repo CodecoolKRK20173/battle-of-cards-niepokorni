@@ -5,6 +5,8 @@ namespace CardGame
 {
      public class SingleCardView
      {
+      
+      /*
          public string CardTheme;
          private string cardName;
         private string EC;
@@ -13,7 +15,7 @@ namespace CardGame
         private string EP;
         private string name;
         
-         /*{
+         {
             name = _player.Name;
             cardName = _player.SingleCardOnPlayerHand.CarModel;
             EC = _player.SingleCardOnPlayerHand.EngineCapacity;
@@ -38,10 +40,10 @@ $@"                         __________________
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |                        .------.    
                   |                    | | |     .------.           |S .   |    
-                  |   EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |     |C_  _ |    .------; / \  |    
-                  |   MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |     |( \/ )|-----. _   |(_,_) |    
-                  | Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |     | \  / | /\  |( )  |  I  S|    
-                  |  EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     |  \/ C|/  \ |_x_) |------'    
+                  | 1.EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |     |C_  _ |    .------; / \  |    
+                  | 2.MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |     |( \/ )|-----. _   |(_,_) |    
+                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |     | \  / | /\  |( )  |  I  S|    
+                  |4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     |  \/ C|/  \ |_x_) |------'    
                   |                    | | |     `-----+'\  / | Y  R|           
                   |      ______        | | |           |  \/ A|-----'            
                   |     /|_||_\`.__    | | |           `------'                        
@@ -67,10 +69,10 @@ $@"                         __________________
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |
                   |                    | | |
-                  |   EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
-                  |   MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
-                  | Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
-                  |  EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
+                  | 1.EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
+                  | 2.MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
+                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
+                  | 4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
                   |                    | | |
                   |      ______        | | |
                   |     /|_||_\`.__    | | |
@@ -103,10 +105,10 @@ $@"                         __________________
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |
                   |                    | | |
-                  |   EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
-                  |   MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
-                  | Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
-                  |  EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
+                  |  1.EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
+                  | 2.MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
+                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
+                  |4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
                   |                    | | |
                   |      ______        | | |
                   |     /|_||_\`.__    | | |

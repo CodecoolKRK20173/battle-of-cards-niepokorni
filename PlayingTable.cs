@@ -18,6 +18,7 @@ namespace CardGame
         {
            
         }
+        
 
         public Player GetWinningPlayer()
         {
@@ -30,6 +31,12 @@ namespace CardGame
                 }
             }
             return winningPlayer;
+        }
+
+
+        public int chooseCardValueForBattle(int numberCardValue)
+        {
+            return numberCardValue;
         }
         
         }

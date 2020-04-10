@@ -36,7 +36,7 @@ namespace CardGame
 $@"                         __________________                                   
                       __|________________  |                                    
                    __|_________________  | |                                    
-                  |~P: {player.Name.PadRight(12)}    | | |                                      
+                  |~P: {player.Name.PadRight(8)}    | | |                                      
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |                        .------.    
                   |                    | | |     .------.           |S .   |    
@@ -65,7 +65,7 @@ $@"                         __________________
            $@"                         __________________                                   
                       __|________________  |
                    __|_________________  | |
-                  |~P: {player.Name.PadRight(12)}    | | |
+                  |~P: {player.Name.PadRight(8)}    | | |
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |
                   |                    | | |
@@ -101,7 +101,7 @@ $@"                         __________________
                          __________________                                   
                       __|________________  |
                    __|_________________  | |
-                  |~P: {player.Name.PadRight(12)}    | | |
+                  |~P: {player.Name.PadRight(8)}    | | |
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |
                   |                    | | |

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 
-
 namespace CardGame
 {
 	class GameInterface
@@ -46,12 +45,19 @@ namespace CardGame
 							//StartScreenDisplay(i);
 							//Thread.Sleep(20);
 						}
+						Console.ForegroundColor = ConsoleColor.Blue;
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
-						CenterAlign("MENU:\n");
-						CenterAlign(":: 1 ::  Play\n");
-						CenterAlign(":: 2 ::  Best scores\n");
-						CenterAlign(":: 3 ::  How to play\n");
-						CenterAlign(":: 4 ::  Exit");
+						Console.ForegroundColor = ConsoleColor.Magenta;
+						CenterAlign("M E N U\n");
+						Console.ForegroundColor = ConsoleColor.DarkGreen;
+						CenterAlign(":: 1 ::  Play  ::            \n");
+						CenterAlign(":: 2 ::  Best scores  ::     \n");
+						CenterAlign(":: 3 ::  How to play  ::     \n");
+						CenterAlign(":: 4 ::  Exit  ::             ");
+						Console.WriteLine();
+						Console.WriteLine();
+						Console.Write("Choose a right option from menu: ");
+						Console.ResetColor();
 
 						string choice = Console.ReadLine();
 						if (choice == "1")

@@ -151,7 +151,7 @@ namespace CardGame
                          Console.Clear();
                          _game.PlayingTable.GetListWithWinningCardsDeckPlayers();
                          Console.WriteLine($" {_game.PlayingTable.GetWinningPlayer().Name} \nCongrats!!  - You are a winner!");
-                         Thread.Sleep(5000);
+                         Console.ReadKey();
                          _gameStatus = Status.START;
                          break;
 					

@@ -102,13 +102,19 @@ namespace CardGame
         }
 
 
-        public void GetListWithWinningCardsDeckPlayers()
+        public IOrderedEnumerable<Player> GetListWithWinningPlayers()
         {
-            var listWithWinningCardsDeckPlayers = _game.Players.OrderByDescending(p => p.PlayerWinningCardsDeck.Count);
-            int temp = 1;
+            var listWithWinningPlayers = _game.Players.OrderByDescending(p => p.PlayerWinningCardsDeck.Count);
+            return listWithWinningPlayers;
+        }
+
+        
+        public void PrintListWithWinningPlayers()
+        {
+            var temp = 1;
             Console.WriteLine("SCORES");
             Console.WriteLine("######################################################");
-            foreach (var player in listWithWinningCardsDeckPlayers)
+            foreach (var player in GetListWithWinningPlayers())
             {
                 Console.WriteLine($"{temp}. {player.Name} have {player.PlayerWinningCardsDeck.Count} winning Cards");
                 temp++;
@@ -117,6 +123,13 @@ namespace CardGame
         }
 
 
+        public string GetWinnerAtTheEndGame()
+        {
+            var winnerList = _game.PlayingTable.GetListWithWinningPlayers();
+            return winnerList.First().Name;
+        }
+        
+        
         public bool CheckIsSomePlayersCardsDeckIsEmpty()
         {
             bool playersCardsDeckIsEmpty = false;

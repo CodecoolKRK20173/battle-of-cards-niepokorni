@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace CardGame
 {
@@ -109,7 +110,6 @@ namespace CardGame
 						_gameStatus = Status.PLAY;
 						break;
 
-					
 					case Status.PLAY:
 						Player winningPlayer = _game.PlayingTable.GetWinningPlayer();
 						Console.WriteLine($"Hi {winningPlayer.Name}");
@@ -130,17 +130,20 @@ namespace CardGame
 							break;
 						}
 						_game.PlayingTable.DrawNewSingleCardsOnPlayersHands();
-						_game.PlayingTable.GetListWithWinningCardsDeckPlayers();
+						_game.PlayingTable.PrintListWithWinningPlayers();
+						Console.WriteLine("Press any key to start next round");
+						Console.ReadKey();
 						break;
-					
-                     case Status.WIN:
+
+					case Status.WIN:
                          Console.Clear();
+                         _game.PlayingTable.PrintListWithWinningPlayers();
                          
-                         Console.WriteLine($" {_game.PlayingTable.GetWinningPlayer().Name} \nCongrats!!  - You are a winner!");
+                         Console.WriteLine($" {_game.PlayingTable.GetWinnerAtTheEndGame()} \nCongrats!!  - You are the winner!");
                          Console.ReadKey();
                          _gameStatus = Status.START;
                          break;
-					
+
 					case Status.EXIT:
 						Console.Clear();
 						Console.WriteLine();
@@ -148,7 +151,6 @@ namespace CardGame
 						break;
 				}
 		}
-
 		
 		
 		private void PrintPlayersCards()
@@ -158,7 +160,6 @@ namespace CardGame
 	             CenterAlign(line);
              }
          }
-
 		public readonly List<string> PlayerCardsToPrint = new List<string>  {
              
 				@".------..------..------..------..------..------..------..------..------..------.",

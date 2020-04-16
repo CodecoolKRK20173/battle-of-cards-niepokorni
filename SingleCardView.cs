@@ -51,57 +51,58 @@ $@"                         __________________
                   |_______C.A.R.S______| "
                  
                  );
-        Player player = new Player();
-        GameInterface game = new GameInterface();
+        // Player player = new Player();
+        
 
-            Console.WriteLine();
-            Console.Write("Choose option: ");
+        //     Console.WriteLine();
+        //     Console.Write("Choose option: ");
 
-            string choice = Console.ReadLine();
+        //     string choice = Console.ReadLine();
 
-            if(choice == "1")
-            {
-                Console.WriteLine(EC);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(player.SingleCardOnPlayerHand.EngineCapacity);
-                Console.ResetColor();
-                if (int.Parse(EC) > int.Parse(player.SingleCardOnPlayerHand.EngineCapacity))
-                {
-                    Console.WriteLine($"{name} " + "wins");
-                    PrintPlayerCard();
-                }
-                else
-                {
-                    Console.WriteLine($"Ola " + "wins");
-                    PrintPlayerCard();
-                }
+        //     if(choice == "1")
+        //     {
+        //         Console.WriteLine(EC);
+        //         Console.ForegroundColor = ConsoleColor.Yellow;
+        //         Console.WriteLine(player.SingleCardOnPlayerHand.EngineCapacity);
+        //         Console.ResetColor();
+        //         if (int.Parse(EC) > int.Parse(player.SingleCardOnPlayerHand.EngineCapacity))
+        //         {
+        //             Console.WriteLine($"{name} " + "wins");
+        //             PrintCardWithReplaceData();
+        //         }
+        //         else
+        //         {
+        //             Console.WriteLine($"{game.Players[1]} " + "wins");
+        //             PrintCardWithReplaceData();
+        //         }
                 
-            }
-            else if(choice == "2")
-            {
-                Console.WriteLine(MS);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(player.SingleCardOnPlayerHand.MaxSpeed);
-                Console.ResetColor();
-                if (int.Parse(MS) > int.Parse(player.SingleCardOnPlayerHand.MaxSpeed))
-                {
-                    Console.WriteLine();
-                }
-            }
-            else if(choice == "3")
-            {
-                Console.WriteLine(AC);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(player.SingleCardOnPlayerHand.Acceleration);
-                Console.ResetColor();
-            }
-            else if(choice == "4")
-            {
-                Console.WriteLine(EP);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                System.Console.WriteLine(player.SingleCardOnPlayerHand.EnginePower);
-                Console.ResetColor();
-            }
+        //     }
+        //     else if(choice == "2")
+        //     {
+        //         Console.WriteLine(MS);
+        //         Console.ForegroundColor = ConsoleColor.Yellow;
+        //         Console.WriteLine(player.SingleCardOnPlayerHand.MaxSpeed);
+        //         Console.ResetColor();
+        //         if (int.Parse(MS) > int.Parse(player.SingleCardOnPlayerHand.MaxSpeed))
+        //         {
+        //             Console.WriteLine($"{name} " + "wins");
+        //             Console.WriteLine();
+        //         }
+        //     }
+        //     else if(choice == "3")
+        //     {
+        //         Console.WriteLine(AC);
+        //         Console.ForegroundColor = ConsoleColor.Yellow;
+        //         Console.WriteLine(player.SingleCardOnPlayerHand.Acceleration);
+        //         Console.ResetColor();
+        //     }
+        //     else if(choice == "4")
+        //     {
+        //         Console.WriteLine(EP);
+        //         Console.ForegroundColor = ConsoleColor.Yellow;
+        //         System.Console.WriteLine(player.SingleCardOnPlayerHand.EnginePower);
+        //         Console.ResetColor();
+        //     }
      
         }
     }        

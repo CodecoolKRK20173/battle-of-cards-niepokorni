@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 
 namespace CardGame
@@ -43,11 +44,11 @@ namespace CardGame
                     break;
                 case "3":
                     var maxAccelerationValueFromPlayersCards =
-                        _game.Players.Min(player => float.Parse(player.SingleCardOnPlayerHand.Acceleration));
+                        _game.Players.Min(player => Convert.ToDouble(player.SingleCardOnPlayerHand.Acceleration, CultureInfo.InvariantCulture));
                     
                     foreach (var PLAYER in _game.Players)
                     {
-                        if (float.Parse(PLAYER.SingleCardOnPlayerHand.Acceleration) == maxAccelerationValueFromPlayersCards)
+                        if (Convert.ToDouble(PLAYER.SingleCardOnPlayerHand.Acceleration, CultureInfo.InvariantCulture) == maxAccelerationValueFromPlayersCards)
                             winningPlayer = PLAYER;
                     }
                     break;

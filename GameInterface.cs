@@ -133,6 +133,7 @@ namespace CardGame
 						_game.PlayingTable.PrintListWithWinningPlayers();
 						Console.WriteLine("Press any key to start next round");
 						Console.ReadKey();
+						Console.Clear();
 						break;
 
 					case Status.WIN:

@@ -1039,11 +1039,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lukas\\Desktop\\battle-of-cards-niepokorni-old\\battle-of-cards-niepokorni.csproj",
+      "projectUniqueName": "C:\\Users\\lukas\\Google Drive\\CodeCool\\CSharpProject\\battle-of-cards-niepokorni-old\\battle-of-cards-niepokorni.csproj",
       "projectName": "battle-of-cards-niepokorni",
-      "projectPath": "C:\\Users\\lukas\\Desktop\\battle-of-cards-niepokorni-old\\battle-of-cards-niepokorni.csproj",
+      "projectPath": "C:\\Users\\lukas\\Google Drive\\CodeCool\\CSharpProject\\battle-of-cards-niepokorni-old\\battle-of-cards-niepokorni.csproj",
       "packagesPath": "C:\\Users\\lukas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lukas\\Desktop\\battle-of-cards-niepokorni-old\\obj\\",
+      "outputPath": "C:\\Users\\lukas\\Google Drive\\CodeCool\\CSharpProject\\battle-of-cards-niepokorni-old\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lukas\\AppData\\Roaming\\NuGet\\NuGet.Config",

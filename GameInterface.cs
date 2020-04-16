@@ -22,6 +22,7 @@ namespace CardGame
 		static Status _gameStatus = Status.START;
 		private List<string > playersName = new List<string>();
 		private Game _game;
+		private SingleCardView singleCardView = new SingleCardView();
 
 
 		public static void CenterAlign(string text)
@@ -42,8 +43,6 @@ namespace CardGame
 						{
 							Console.Clear();
 							PrintPlayersCards();
-							//StartScreenDisplay(i);
-							//Thread.Sleep(20);
 						}
 						Console.ForegroundColor = ConsoleColor.Blue;
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
@@ -100,7 +99,7 @@ namespace CardGame
 							playersName.Add(playerName);
 						}
 						
-						Console.WriteLine("Write amount of Cards for Player");
+						Console.WriteLine("How many rounds do you want to play?");
 						int amountCards = int.Parse(Console.ReadLine());
 
 						_game = new Game(nameOfTheGame, numberOfPlayers, amountCards);
@@ -114,25 +113,44 @@ namespace CardGame
 						}
 						
 						_game.Players[0].StatusOfWinning = true; //declare player who start the game
+						Console.Clear();
 						_gameStatus = Status.PLAY;
 						break;
 
+					
 					case Status.PLAY:
-						var mainPlayerAtTable = _game.PlayingTable.GetWinningPlayer(); 
+						Player winningPlayer = _game.PlayingTable.GetWinningPlayer();
 						
-						SingleCardView playerSingleCardView = new SingleCardView();
+						Console.WriteLine($"Hi {winningPlayer.Name}");
+						Console.WriteLine("Choose value of your Card for the Battle");
+						singleCardView.PrintCardOfMainPlayerAtTable(winningPlayer);
+						string chosenCardValueByPlayer = Console.ReadLine();
+						Console.Clear();
+						winningPlayer = _game.PlayingTable.CompareValueOnPlayersCarts(chosenCardValueByPlayer);
+						singleCardView.printAllCardsFromBattle(_game);
 						
-						playerSingleCardView.PrintCardOfMainPlayerAtTable(mainPlayerAtTable);
-						playerSingleCardView.PrintSingleCard(mainPlayerAtTable);
-						playerSingleCardView.PrintSingleWinnerCard(mainPlayerAtTable);
+						singleCardView.PrintSingleWinnerCard(winningPlayer);
+						Console.WriteLine("The winner is:");
+						Console.WriteLine(winningPlayer.Name);
+						Console.WriteLine();
+						_game.PlayingTable.AddCardsForWinningPlayer(winningPlayer);
 						
-						Console.ReadLine();
+						if (_game.PlayingTable.CheckIsSomePlayersCardsDeckIsEmpty())
+						{
+							_gameStatus = Status.WIN;
+							break;
+						}
+						
+						_game.PlayingTable.DrawNewSingleCardsOnPlayersHands();
+						_game.PlayingTable.GetListWithWinningCardsDeckPlayers();
 						
 						break;
-
+					
+					
                      case Status.WIN:
                          Console.Clear();
-                         Console.WriteLine($"\nCongrats!!  - You are a winner!");
+                         _game.PlayingTable.GetListWithWinningCardsDeckPlayers();
+                         Console.WriteLine($" {_game.PlayingTable.GetWinningPlayer().Name} \nCongrats!!  - You are a winner!");
                          Thread.Sleep(5000);
                          _gameStatus = Status.START;
                          break;

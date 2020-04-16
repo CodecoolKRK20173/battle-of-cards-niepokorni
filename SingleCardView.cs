@@ -36,13 +36,13 @@ namespace CardGame
 $@"                         __________________                                   
                       __|________________  |                                    
                    __|_________________  | |                                    
-                  |~P: {player.Name.PadRight(8)}    | | |                                      
+                  |Player: {player.Name.PadRight(8)}    | | |                                      
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |                        .------.    
                   |                    | | |     .------.           |S .   |    
-                  | 1.EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |     |C_  _ |    .------; / \  |    
-                  | 2.MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |     |( \/ )|-----. _   |(_,_) |    
-                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |     | \  / | /\  |( )  |  I  S|    
+                  |1.EngineCap:  {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |     |C_  _ |    .------; / \  |    
+                  |2.MaxSpeed:  {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |     |( \/ )|-----. _   |(_,_) |    
+                  |3.Acceleration:{player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |     | \  / | /\  |( )  |  I  S|    
                   |4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     |  \/ C|/  \ |_x_) |------'    
                   |                    | | |     `-----+'\  / | Y  R|           
                   |      ______        | | |           |  \/ A|-----'            
@@ -59,20 +59,28 @@ $@"                         __________________
          
          public void PrintSingleCard(Player player)
          {
-             
+          Console.ForegroundColor = ConsoleColor.Red; 
           Console.WriteLine(
-                 
-           $@"                         __________________                                   
+           $@"
+ _        _______  _______  _______  _______ 
+( \      (  ___  )(  ____ \(  ____ \(  ____ )
+| (      | (   ) || (    \/| (    \/| (    )|
+| |      | |   | || (_____ | (__    | (____)|
+| |      | |   | |(_____  )|  __)   |     __)
+| |      | |   | |      ) || (      | (\ (   
+| (____/\| (___) |/\____) || (____/\| ) \ \__
+(_______/(_______)\_______)(_______/|/   \__/
+                         __________________                                   
                       __|________________  |
                    __|_________________  | |
-                  |~P: {player.Name.PadRight(8)}    | | |
+                  |Player: {player.Name.PadRight(8)}    | | |
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |
                   |                    | | |
-                  | 1.EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
-                  | 2.MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
-                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
-                  | 4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
+                  |1.EngineCap:  {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
+                  |2.MaxSpeed:  {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
+                  |3.Acceleration:{player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
+                  |4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
                   |                    | | |
                   |      ______        | | |
                   |     /|_||_\`.__    | | |
@@ -82,6 +90,7 @@ $@"                         __________________
                   |_______C.A.R.S______| "
                  
           );
+          Console.ResetColor();
          }
          
          public void PrintSingleWinnerCard(Player player)
@@ -101,13 +110,13 @@ $@"                         __________________
                          __________________                                   
                       __|________________  |
                    __|_________________  | |
-                  |~P: {player.Name.PadRight(8)}    | | |
+                  |Player: {player.Name.PadRight(8)}    | | |
                   |                    | | |                                    
                   |   {player.SingleCardOnPlayerHand.CarModel.PadRight(15)}  | | |
                   |                    | | |
-                  |  1.EngineCap: {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
-                  | 2.MaxSpeed: {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
-                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)} | | |
+                  |1.EngineCap:  {player.SingleCardOnPlayerHand.EngineCapacity.PadRight(4)}  | | |
+                  |2.MaxSpeed:  {player.SingleCardOnPlayerHand.MaxSpeed.PadRight(4)}   | | |
+                  |3.Acceleration: {player.SingleCardOnPlayerHand.Acceleration.Trim().PadRight(4)}| | |
                   |4.EnginePower: {player.SingleCardOnPlayerHand.EnginePower.PadRight(4)} | | |     
                   |                    | | |
                   |      ______        | | |
@@ -115,13 +124,23 @@ $@"                         __________________
                   |    (   _    _ _\   | | |
                   |    =`-(_)--(_)-'   | |_|
                   |                    |_|
-                  |_______C.A.R.S______| "
+                  |_______C.A.R.S______| " 
                  
           );
-          Console.ForegroundColor = ConsoleColor.White;
+          Console.ResetColor();
          }
 
 
+         public void printAllCardsFromBattle(Game _game)
+         {
+          foreach (var PLAYER in _game.Players)
+          {
+           if (PLAYER.StatusOfWinning == false)
+           {
+            PrintSingleCard(PLAYER);
+           }
+          }
+         }
         /*
          public readonly List<string> PlayerCardsToPrint = new List<string>  {
              

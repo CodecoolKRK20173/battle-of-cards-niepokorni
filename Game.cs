@@ -23,11 +23,6 @@ namespace CardGame
             //create new players
             for (var i = 0; i < numberOfPlayers; i++) Players.Add(new Player());
         }
-
         
-        public int GetNumersOfPlayers()
-        {
-            return Players.Count;
-        }
     }
 }

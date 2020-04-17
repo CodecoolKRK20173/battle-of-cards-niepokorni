@@ -48,7 +48,7 @@ namespace CardGame
                 string[] elementsForAddToSingleCard = VARIABLE.Split(",");
                 SingleCard newSingleCard = new SingleCard(
                     elementsForAddToSingleCard[0],
-                    (elementsForAddToSingleCard[1]),
+                    elementsForAddToSingleCard[1],
                     elementsForAddToSingleCard[3],
                     elementsForAddToSingleCard[4],
                     elementsForAddToSingleCard[2]);

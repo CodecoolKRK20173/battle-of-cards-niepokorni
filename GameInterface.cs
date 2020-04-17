@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading;
+using System.Diagnostics;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace CardGame
 {
 	class GameInterface
 	{
-		public enum Status
+		private enum Status
 		{
 			START,
 			CREATE_GAME,
@@ -15,16 +15,17 @@ namespace CardGame
 			WIN,
 			BEST_SCORES,
 			HOW_TO_PLAY,
+
 			EXIT
 		}
 
-		static bool _theGameIsOver = false;
-		static Status _gameStatus = Status.START;
+		private static bool _theGameIsOver = false;
+		private Status _gameStatus = Status.START;
 		private List<string > playersName = new List<string>();
 		private Game _game;
 		private SingleCardView singleCardView = new SingleCardView();
 
-
+		BestScores bestScores = new BestScores();
 		public static void CenterAlign(string text)
 		{
 			Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (text.Length / 2)) + "}", text));
@@ -39,11 +40,7 @@ namespace CardGame
 
 					case Status.START:
 						Console.Title = "Battle of Cards";
-						for (int i = Console.WindowWidth - 50; i >= 0; i--)
-						{
-							Console.Clear();
-							PrintPlayersCards();
-						}
+						PrintPlayersCards();
 						Console.ForegroundColor = ConsoleColor.Blue;
 						CenterAlign("Welcome in Battle of Cards by NIEPOKORNI!\n");
 						Console.ForegroundColor = ConsoleColor.Magenta;
@@ -59,25 +56,23 @@ namespace CardGame
 						Console.ResetColor();
 
 						string choice = Console.ReadLine();
-						if (choice == "1")
+						switch (choice)
 						{
-							_gameStatus = Status.CREATE_GAME;
-						}
-						else if (choice == "2")
-						{
-							_gameStatus = Status.BEST_SCORES;
-						}
-						else if (choice == "3")
-						{
-							_gameStatus = Status.HOW_TO_PLAY;
-						}
-						else if (choice == "4")
-						{
-							_gameStatus = Status.EXIT;
-						}
-						else
-						{
-							Console.WriteLine("Choose a right option from menu.");
+							case "1":
+								_gameStatus = Status.CREATE_GAME;
+								break;
+							case "2":
+								_gameStatus = Status.BEST_SCORES;
+								break;
+							case "3":
+								_gameStatus = Status.HOW_TO_PLAY;
+								break;
+							case "4":
+								_gameStatus = Status.EXIT;
+								break;
+							default:
+								Console.WriteLine("Choose a right option from menu.");
+								break;
 						}
 
 						break;
@@ -87,11 +82,9 @@ namespace CardGame
 
 						Console.WriteLine("Write name of the game:");
 						string nameOfTheGame = Console.ReadLine();
-
+						
 						Console.WriteLine("How many players ? ");
 						int numberOfPlayers = int.Parse(Console.ReadLine());
-
-						
 						for (int i = 0; i < numberOfPlayers; i++)
 						{
 							Console.WriteLine( $"Write  name for Player nr {i+1} ?");
@@ -114,13 +107,12 @@ namespace CardGame
 						
 						_game.Players[0].StatusOfWinning = true; //declare player who start the game
 						Console.Clear();
+						
 						_gameStatus = Status.PLAY;
 						break;
 
-					
 					case Status.PLAY:
 						Player winningPlayer = _game.PlayingTable.GetWinningPlayer();
-						
 						Console.WriteLine($"Hi {winningPlayer.Name}");
 						Console.WriteLine("Choose value of your Card for the Battle");
 						singleCardView.PrintCardOfMainPlayerAtTable(winningPlayer);
@@ -128,46 +120,54 @@ namespace CardGame
 						Console.Clear();
 						winningPlayer = _game.PlayingTable.CompareValueOnPlayersCarts(chosenCardValueByPlayer);
 						singleCardView.printAllCardsFromBattle(_game);
-						
 						singleCardView.PrintSingleWinnerCard(winningPlayer);
 						Console.WriteLine("The winner is:");
 						Console.WriteLine(winningPlayer.Name);
 						Console.WriteLine();
 						_game.PlayingTable.AddCardsForWinningPlayer(winningPlayer);
-						
 						if (_game.PlayingTable.CheckIsSomePlayersCardsDeckIsEmpty())
 						{
 							_gameStatus = Status.WIN;
 							break;
 						}
-						
 						_game.PlayingTable.DrawNewSingleCardsOnPlayersHands();
-						_game.PlayingTable.GetListWithWinningCardsDeckPlayers();
-						
+						_game.PlayingTable.PrintListWithWinningPlayers();
+						Console.WriteLine("Press any key to start next round");
+						Console.ReadKey();
+						Console.Clear();
 						break;
-					
-					
-                     case Status.WIN:
+
+					case Status.WIN:
                          Console.Clear();
-                         _game.PlayingTable.GetListWithWinningCardsDeckPlayers();
-                         Console.WriteLine($" {_game.PlayingTable.GetWinningPlayer().Name} \nCongrats!!  - You are a winner!");
+                         _game.PlayingTable.PrintListWithWinningPlayers();
+                         
+                         Console.WriteLine($" {_game.PlayingTable.GetWinnerAtTheEndGame()} \nCongrats!!  - You are the winner!");
                          Console.ReadKey();
                          _gameStatus = Status.START;
                          break;
-					
+
 					case Status.EXIT:
 						Console.Clear();
 						Console.WriteLine();
 						_theGameIsOver = true;
 						break;
+
+					case Status.BEST_SCORES:
+						bestScores.AddToBestScores();
+        
+						Console.ReadKey();
+						break;
 				}
 		}
-
-         public void PrintPlayersCards() {
-             foreach (string line in PlayerCardsToPrint) {
-                 CenterAlign(line);
-             }}
-
+		
+		
+		private void PrintPlayersCards()
+         {
+             foreach (string line in PlayerCardsToPrint)
+             {
+	             CenterAlign(line);
+             }
+         }
 		public readonly List<string> PlayerCardsToPrint = new List<string>  {
              
 				@".------..------..------..------..------..------..------..------..------..------.",
@@ -176,34 +176,7 @@ namespace CardGame
 				@"| ()() || :\/: || :\/: || (__) || :\/: || :\/: || :\/: || ()() || ()() || :\/: |",
 				@"| '--'N|| '--'I|| '--'E|| '--'P|| '--'O|| '--'K|| '--'O|| '--'R|| '--'N|| '--'I|",
 				@"`------'`------'`------'`------'`------'`------'`------'`------'`------'`------",
-				"\n\n"
-         };	 
-
-
-		/*
-		public void StartScreenDisplay(int textNiepokorniCards)
-		{
-			System.Console.WriteLine("\t\tLet's play a serious game, mate!");
-			System.Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t TEST TEST CZY TO WIDAĆ? ");
-
-			string[] NiepokorniASCII =
-			{
-				@".------..------..------..------..------..------..------..------..------..------.",
-				@"|N.--. ||I.--. ||E.--. ||P.--. ||O.--. ||K.--. ||O.--. ||R.--. ||N.--. ||I.--. |",
-				@"| :(): || (\/) || (\/) || :/\: || :/\: || :/\: || :/\: || :(): || :(): || (\/) |",
-				@"| ()() || :\/: || :\/: || (__) || :\/: || :\/: || :\/: || ()() || ()() || :\/: |",
-				@"| '--'N|| '--'I|| '--'E|| '--'P|| '--'O|| '--'K|| '--'O|| '--'R|| '--'N|| '--'I|",
-				@"`------'`------'`------'`------'`------'`------'`------'`------'`------'`------'"
-			};
-			foreach (string niepokorniLine in NiepokorniASCII)
-			{
-				Console.SetCursorPosition(textNiepokorniCards, Console.CursorTop);
-				System.Console.WriteLine(niepokorniLine);
-				
-			}
-		}
-
-		*/
+		};
 	}
 }
 

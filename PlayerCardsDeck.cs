@@ -32,7 +32,7 @@ namespace CardGame
             int i = 0;
             while(i < amountCards)
             {
-                string PlayerCards = allCardsDeck[random.Next(allCardsDeck.Count-5)];
+                string PlayerCards = allCardsDeck[random.Next(allCardsDeck.Count)];
                 this._listWithDataFromFile.Add(allCardsDeck[random.Next(allCardsDeck.Count)]); //skorzystałem z listy 
                 allCardsDeck.Remove(PlayerCards);
                 i++;
@@ -48,7 +48,7 @@ namespace CardGame
                 string[] elementsForAddToSingleCard = VARIABLE.Split(",");
                 SingleCard newSingleCard = new SingleCard(
                     elementsForAddToSingleCard[0],
-                    (elementsForAddToSingleCard[1]),
+                    elementsForAddToSingleCard[1],
                     elementsForAddToSingleCard[3],
                     elementsForAddToSingleCard[4],
                     elementsForAddToSingleCard[2]);
